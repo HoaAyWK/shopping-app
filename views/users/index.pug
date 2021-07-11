@@ -1,0 +1,18 @@
+extends ../layouts/common
+
+block content
+    .container
+        form.d-flex(style='margin-top: 10px;')
+                input.form-control.me-2(type='search', placeholder='Search', aria-label='Search')
+                button.btn.btn-outline-success(type='submit') Search
+        table.table
+            tr
+                th Full Name
+                th Email
+                th View
+            each user in users
+                tr
+                    td= user.name
+                    td= user.email
+                    td
+                        a.btn.btn-primary(href="/users/"+user._id) View
