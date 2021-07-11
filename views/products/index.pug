@@ -1,0 +1,16 @@
+extends ../layouts/common
+
+mixin card(image, title, text)
+    .card(style='width: 18rem;')
+        img.card-img-top(class!=attributes.class src=image)
+        .card-body
+            h5.card-title= title
+            p.card-text= text
+
+block content
+    .container
+        .row
+                each product in products
+                    .col
+                        +card(product.image, product.name, product.description)
+
