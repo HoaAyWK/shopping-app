@@ -6,6 +6,14 @@ mixin card(image, title, text)
         .card-body
             h5.card-title= title
             p.card-text= text
+            a.btn.btn-primary(href="#") Add to cart
+mixin pagination(page, currentPage)
+    if page == currentPage
+        li.page-item.active(aria-current='page')
+            a.page-link(href='?page='+page)= page
+    else
+         li.page-item
+                        a.page-link(href='?page='+page)= page
 
 block content
     .container
@@ -13,4 +21,26 @@ block content
                 each product in products
                     .col
                         +card(product.image, product.name, product.description)
+        nav(aria-label='Search results pages')
+            ul.pagination.justify-content-center
+                #priviousPage
+                if priviousPage > 0
+                    li.page-item
+                        a.page-link(href='?page='+priviousPage) Previous
+                else
+                    li.page-item.disabled
+                        a.page-link(href='') Previous
+                #totalPage
+                #page
+                - var n = 0
+                while n < totalPage
+                    +pagination(++n, page)
+                #nextPage
+                if nextPage > totalPage
+                    li.page-item.disabled
+                        a.page-link(href='#') Next
+                else
+                    li.page-item
+                        a.page-link(href='?page='+nextPage) Next
+
 
