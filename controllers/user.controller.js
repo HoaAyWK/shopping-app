@@ -6,3 +6,11 @@ module.exports.index = async (req, res) => {
         users: users
     });
 }
+
+module.exports.viewUser = async (req, res) => {
+    var userId = req.params.userId;
+    var userX = await User.findOne({_id: userId});
+    res.render('users/user', {
+        userX: userX
+    });
+}

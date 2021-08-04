@@ -1,0 +1,18 @@
+extends ../layouts/common
+
+block content
+    .container.bg-light.mt-5(style='padding: 10px; border-radius: 5px;')
+        table.table
+            #userX
+                h1= userX.name
+                tr
+                    th Full Name
+                    th Email
+                    th Gender
+                    th DoB
+                    th Country
+                    tr
+                        td= userX.name
+                        td= userX.email
+        .text-end
+            a(href='/users', style='font-size: 24px;') Back
