@@ -2,8 +2,8 @@ extends ../layouts/common
 
 block content
     .container
-        form.d-flex(style='margin-top: 10px;')
-                input.form-control.me-2(type='search', placeholder='Search', aria-label='Search')
+        form.d-flex(action='/search', method='GET', style='margin-top: 10px;')
+                input.form-control.me-2(name='user', type='search', placeholder='Search', aria-label='Search')
                 button.btn.btn-outline-success(type='submit') Search
         table.table
             tr
