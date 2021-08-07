@@ -1,10 +1,10 @@
+const md5 = require('md5');
+
 const User = require('../models/user.model');
 
 module.exports.index = (req, res) => {
     res.render('login/index');
 }
-
-const md5 = require('md5');
 
 module.exports.login = async (req, res) => {
     var email = req.body.email;

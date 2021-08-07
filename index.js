@@ -13,6 +13,7 @@ const productRoute = require('./routes/product.route');
 const userRoute = require('./routes/user.route');
 const loginRoute = require('./routes/login.route');
 const searchUserRoute = require('./routes/search-user.route');
+const registerRoute = require('./routes/register.route');
 const port = 3000;
 
 const authMiddleware = require('./middlewares/auth.middleware');
@@ -35,6 +36,7 @@ app.use('/products', authMiddleware.requireAuth, productRoute);
 app.use('/users', authMiddleware.requireAuth, userRoute);
 app.use('/search', authMiddleware.requireAuth, searchUserRoute);
 app.use('/', loginRoute);
+app.use('/register', registerRoute);
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`)
 });

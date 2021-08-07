@@ -1,0 +1,25 @@
+extends ../layouts/common
+
+block content
+    .container
+        .row
+            .col-sm-4
+            .col-sm-4
+                h1.d-flex.justify-content-center.mt-5 Create new account
+                if errors
+                    each error in errors
+                        .alert.alert-danger= error
+                if message
+                    .alert.alert-primary= message
+                form.mt-5(action='/register', method='POST')
+                    .mb-3
+                        label.form-label(for='name') Name
+                        input#name.form-control(name='name', type='text', value=values? values.name : '')
+                    .mb-3
+                        label.form-label(for='email') Email address
+                        input#email.form-control(name='email', type='email', value=values? values.email : '')
+                    .mb-3
+                        label.form-label(for='password') Password
+                        input#password.form-control(name='password', type='password', value=values? values.password : '')
+                    .text-center
+                        button.btn.btn-primary(style='width: 50%;') Create
