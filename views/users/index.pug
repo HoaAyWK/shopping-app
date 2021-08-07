@@ -7,11 +7,18 @@ block content
                 button.btn.btn-outline-success(type='submit') Search
         table.table
             tr
+                th Avatar
                 th Full Name
                 th Email
                 th View
             each user in users
                 tr
+                    if user.avatar
+                        td
+                            img(src=user.avatar, width='32', height='32', style='border-radius: 50%;')
+                    else
+                        td
+                            img(src='/images/avatar.png', width='32')
                     td= user.name
                     td= user.email
                     td

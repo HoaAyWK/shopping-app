@@ -10,6 +10,8 @@ module.exports.postCreate = async (req, res) => {
     var name = req.body.name;
     var mail = req.body.email;
     var password = req.body.password;
+    req.body.avatar = req.file.path.split('/').slice(1).join('/');
+    var avatar = req.body.avatar;
     var checkUser = await User.findOne({email: mail});
     if (!name) {
         res.render('register/index', {
@@ -38,7 +40,7 @@ module.exports.postCreate = async (req, res) => {
         });
         return;
     }
-    var user = await User.create({name: name, email: mail, password: md5(password)});
+    var user = await User.create({name: name, email: mail, password: md5(password), avatar: avatar});
     if (!user) {
         res.render('register/index', {
             errors: [

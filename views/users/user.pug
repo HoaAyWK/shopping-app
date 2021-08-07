@@ -2,9 +2,15 @@ extends ../layouts/common
 
 block content
     .container.bg-light.mt-5(style='padding: 10px; border-radius: 5px;')
+        #userX
+        .d-flex.justify-content-center
+            if userX.avatar
+                img(src= '/'+userX.avatar, width='256', height='256', style='border-radius: 50%')
+            else
+                img(src='/images/avatar.png', width='256', height='256')
+        .text-center
+            h1= userX.name
         table.table
-            #userX
-                h1= userX.name
                 tr
                     th Full Name
                     th Email
