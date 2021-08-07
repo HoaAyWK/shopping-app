@@ -31,6 +31,7 @@ app.get('/logout', (req, res) => {
 app.use(cookieParser(process.env.SESSION_SECRET));
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+app.use(express.static('public'));
 
 app.use('/products', authMiddleware.requireAuth, productRoute);
 app.use('/users', authMiddleware.requireAuth, userRoute);
